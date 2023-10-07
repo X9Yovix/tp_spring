@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.app.model.Student;
@@ -25,5 +26,10 @@ public class StudentController {
 		students.add(new Student("FN3", "FN3"));
 		
 		return students;
+	}
+	
+	@GetMapping("/student/{fn}/{ln}")
+	public Student getDynamicStudent(@PathVariable("fn") String firstName,@PathVariable("ln") String lastName) {
+		return new Student(firstName,lastName);
 	}
 }
